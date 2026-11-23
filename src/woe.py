@@ -1,3 +1,4 @@
+
 """
 WoE (Weight of Evidence) e IV (Information Value): las herramientas clásicas de scoring bancario.
 
@@ -24,6 +25,12 @@ def calcular_cortes(x: pd.Series, n_bins: int = 5):
         return None  # pocas categorías (ej. 0/1): cada valor es su propio tramo
     # qcut parte en cuantiles (tramos con igual número de clientes)
     _, cortes = pd.qcut(valores, q=n_bins, retbins=True, duplicates="drop")
+    if len(cortes) <= 3:
+        # Variables de conteo con muchos ceros (ej. atrasos: ~85% tiene 0): los cuantiles
+        # salen todos iguales y quedaría un solo tramo. En ese caso usamos los valores
+        # más bajos como cortes: 0, 1, 2, 3 y "4 o más".
+        unicos = np.sort(valores.unique())
+        cortes = np.concatenate([[-np.inf], unicos[: n_bins - 1], [np.inf]])
     cortes[0], cortes[-1] = -np.inf, np.inf  # extremos abiertos para valores nuevos en test
     return cortes
 
