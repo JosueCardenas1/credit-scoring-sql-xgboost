@@ -30,8 +30,8 @@ python src/03_entrenar.py
 ## Resultados (muestra de prueba, 30%)
 | Modelo | AUC | Gini | KS |
 |---|---|---|---|
-| Logística WoE | _completar_ | _completar_ | _completar_ |
-| XGBoost | _completar_ | _completar_ | _completar_ |
+| Logística WoE | 0.843 |0.687 | 0.548 |
+| XGBoost | 0.865 | 0.729 |0.576|
 
 ![ROC](reports/roc.png)
 ![Importancia](reports/importancia_xgb.png)
