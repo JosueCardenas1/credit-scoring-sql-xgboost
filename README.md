@@ -30,8 +30,10 @@ python src/03_entrenar.py
 ## Resultados (muestra de prueba, 30%)
 | Modelo | AUC | Gini | KS |
 |---|---|---|---|
-| Logística WoE | 0.843 |0.687 | 0.548 |
-| XGBoost | 0.865 | 0.729 |0.576|
+| Logística WoE | 0.854 | 0.708 | 0.557 |
+| XGBoost | 0.865 | 0.729 | 0.576 |
+
+Con un punto de corte de 567 puntos se aprueba al 73.6% de los solicitantes y la tasa de default de los aprobados baja de 6.68% a 1.97%.
 
 ![ROC](reports/roc.png)
 ![Importancia](reports/importancia_xgb.png)
